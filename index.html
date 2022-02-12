@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@500&family=Source+Code+Pro:wght@200&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai+Looped:wght@600&family=Roboto:wght@300&display=swap"
+        rel="stylesheet">
+    <title>TODO App</title>
+</head>
+<style>
+    body {
+        background-color: black;
+    }
+    .header {
+        font-family: 'Heebo', sans-serif;
+        margin: 100px 0px 0px 34%;
+        padding: 10px 10px;
+        padding-bottom: 30px;
+        background-color: #1db954;
+        text-align: center;
+        border: 2px solid black;
+        width: 400px; 
+        box-shadow: black;
+      }
+    .tasks {
+        font-family: 'Heebo', sans-serif;
+        font-size: 15px;
+        width: 80%;
+        padding: 10px 5px;
+        height: 12px;
+    }
+
+    .btn2 {
+        font-family: 'Heebo', sans-serif;
+        width: 47px;
+        height: 33px;
+        background-color: rgb(160, 160, 160);
+    }
+
+    .btn2:hover {
+        background: rgb(70, 67, 67);
+    }
+
+    .todo{
+        text-align: left;
+        cursor:pointer;
+        display: inline-block;
+        background-color: #1db954;
+        position: absolute;
+        padding: 15px;
+        border: 2px solid black;
+        width:390px;
+        height:250px;
+        overflow: auto;
+        margin: 71px 250px 0px -29.6%;
+        }
+    .paragraph-styling {
+
+        cursor: pointer;
+        padding:5px;
+        border:2px solid black;
+
+    }
+   .paragraph-styling:hover{
+     background-color: rgb(250, 243, 243);
+
+
+    }
+#outer{
+    color:black;
+    text-align: center;
+    font-size: 25px;
+    background-color:#1db954;
+    padding: 0px;
+    margin:0px;
+}
+#close{
+
+    background-color: rgb(190, 188, 188);
+    font-family: 'Heebo', sans-serif;
+    margin: 3px;
+    cursor:pointer;
+
+}
+#close:hover{
+
+    background-color: rgb(133, 124, 124);
+}
+</style>
+<body>
+<p id="outer">Welcome User</p>
+    <div class="header">
+        <h1>TO-DO List</h1>
+        <input type="text" id="task" class="tasks" placeholder="Task...">
+        <button id="add" class="btn2">ADD</button>
+        <div class="todo" id="addingtodo">
+        </div>
+        <div class="CLOSE" id="close">
+
+        </div>
+    </div>
+    <script>
+        var addbtn = document.getElementById('add');
+        var addingtodo = document.getElementById('addingtodo');
+        var task = document.getElementById('task');
+        // var btn= document.createElement("button");
+        // btn.innerHTML="delete";
+        addbtn.addEventListener('click', function () {
+            var paragraph = document.createElement('p');
+            paragraph.classList.add('paragraph-styling');
+            paragraph.innerText = task.value;
+            addingtodo.appendChild(paragraph);/*Adding element to our list*/
+            task.value="";
+            paragraph.addEventListener('click',function(){
+            paragraph.style.textDecoration="line-through";/*Single click produces a single line on element, indicating that task is complete*/
+           });
+           var button= document.createElement("button");
+           button.innerHTML="delete";
+           button.id="close";
+           addingtodo.appendChild(button);/*Appedning a delete button to each element*/
+            button.addEventListener('click',function(){
+                addingtodo.removeChild(paragraph);
+                button.style.visibility="hidden";/*Hiddening delete button after deleteing element*/
+
+            }
+        );
+        });
+        </script>
+</body>
+</html> 
